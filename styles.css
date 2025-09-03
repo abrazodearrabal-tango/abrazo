@@ -121,3 +121,10 @@
 /* Quitar bullets en la lista de “La propuesta incluye” */
 .list.no-bullets .item { grid-template-columns: 1fr; }
 .list.no-bullets .item > :first-child { display:none; }
+
+.about-card .bgimg {
+  aspect-ratio: 1 / 1;              /* cuadrado */
+  background-size: cover;
+  background-position: center 15%;  /* recorte desde 15% del top */
+  border-radius: 8px 8px 0 0;       /* opcional, esquinas redondeadas arriba */
+}
