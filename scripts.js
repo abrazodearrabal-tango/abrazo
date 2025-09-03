@@ -1,13 +1,14 @@
 /* scripts.js
-   Single file interactions: lang switch, mobile nav, reveals, form
+   Lang switch next to hamburger + mobile nav + reveals + simple form
    Files: EN -> index.html, ES -> es.html, DE -> de.html
 */
-
 'use strict';
 
 /* ===== Language switcher (EN ES DE) ===== */
 (function () {
   const MAP = { en: 'index.html', es: 'es.html', de: 'de.html' };
+
+  // Find existing lang host from the header markup
   const langHost = document.querySelector('.lang');
   if (!langHost) return;
 
@@ -15,7 +16,9 @@
     .slice(0, 2)
     .toLowerCase();
 
-  // Build buttons in desired order
+  // Build buttons
+  langHost.setAttribute('role', 'group');
+  langHost.setAttribute('aria-label', 'Language');
   langHost.innerHTML = `
     <button type="button" data-lang="en" aria-label="English">EN</button>
     <button type="button" data-lang="es" aria-label="Español">ES</button>
@@ -28,8 +31,7 @@
 
   function gotoLang(lang) {
     const file = MAP[lang] || MAP.en;
-    const url = `${basePath}${file}${qs}${hash}`;
-    window.location.href = url;
+    window.location.href = `${basePath}${file}${qs}${hash}`;
   }
 
   function markActive(root) {
@@ -47,17 +49,18 @@
   });
   markActive(langHost);
 
-  // Mobile replica
-  const mobileLinks = document.querySelector('#mobileMenu .container');
-  if (mobileLinks && !mobileLinks.querySelector('.lang')) {
-    const clone = langHost.cloneNode(true);
-    mobileLinks.appendChild(clone);
-    clone.addEventListener('click', e => {
-      const btn = e.target.closest('button[data-lang]');
-      if (!btn) return;
-      gotoLang(btn.dataset.lang);
-    });
-    markActive(clone);
+  // Move lang next to the hamburger inside a right-side wrapper
+  const headerBar = document.querySelector('.container.nav');
+  const hambEl = document.getElementById('hamb');
+  if (headerBar && hambEl) {
+    let actions = headerBar.querySelector('.top-actions');
+    if (!actions) {
+      actions = document.createElement('div');
+      actions.className = 'top-actions';
+      headerBar.appendChild(actions);
+    }
+    actions.appendChild(langHost); // move existing node
+    actions.appendChild(hambEl);   // place hamburger to the right of the lang
   }
 })();
 
@@ -69,14 +72,14 @@
 
   hamb.setAttribute('aria-expanded', 'false');
 
-  function toggleMenu(forceOpen) {
-    const isOpen = forceOpen != null ? !forceOpen : mobileMenu.style.display === 'block';
-    const next = isOpen ? 'none' : 'block';
+  function toggleMenu() {
+    const open = mobileMenu.style.display === 'block';
+    const next = open ? 'none' : 'block';
     mobileMenu.style.display = next;
     hamb.setAttribute('aria-expanded', next === 'block' ? 'true' : 'false');
   }
 
-  hamb.addEventListener('click', () => toggleMenu());
+  hamb.addEventListener('click', toggleMenu);
 
   // Close on link click
   mobileMenu.querySelectorAll('a').forEach(a => {
@@ -94,16 +97,11 @@
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add('is-visible');
-        });
-      },
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }),
       { threshold: 0.1 }
     );
     els.forEach(el => io.observe(el));
   } else {
-    // Fallback
     els.forEach(el => el.classList.add('is-visible'));
   }
 })();

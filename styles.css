@@ -133,3 +133,31 @@ footer{background:var(--burgundy-900);color:#fff;padding:48px 0;}
 .mt-8{margin-top:32px;} .mb-8{margin-bottom:32px;} .mb-16{margin-bottom:48px;}
 .py-0{padding-top:0;padding-bottom:0;}
 .bg-sage{background:var(--sage-50);} .bg-burgundy-soft{background:var(--burgundy-50);}
+
+/* Right actions wrapper next to the hamburger */
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Language pill nicer spacing */
+.lang{
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  padding:2px;                 /* soft inner padding */
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+}
+.lang button{
+  padding:6px 12px;            /* comfy click area */
+  font-size:14px;
+  line-height:1;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.lang button:not(.is-active):hover{background:var(--burgundy-50);}
+.lang .is-active{background:var(--burgundy-600);color:#fff;border-radius:8px;}
