@@ -153,3 +153,12 @@
   font-size: 18px;
   padding: 14px 32px;
 }
+
+.about-photo {
+  display: block;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;  /* recorta sin deformar */
+  border-radius: 8px; /* si querés circular usá 50% */
+  margin: 0 0 16px;
+}
