@@ -119,35 +119,41 @@
     
         <div class="grid-2">
           <article class="card about-card">
-            <div class="card-body content">
-              <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Romina</h4>
-              <img src="romi.jpg" alt="Romina" class="about-photo">
-              <p class="muted" style="line-height: 1.7;">
-                Soy bailarina de tango nacida en el oeste del Gran Buenos Aires. Empecé a bailar hace 10 años 
-                en el Club Premier de Caballito. Mi estilo es alegre y dinámico, con influencias del teatro, pilates 
-                y ritmos latinos. El baile me conecta con el momento presente y con el bailarín con quien comparto la pista.
-              </p>
-              <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
-                Tango me salvó la vida. Hoy junto a Ramón compartimos una propuesta que une pasión, diversión y 
-                una mirada profunda sobre la conexión.
-              </blockquote>
+            <div class="about-row">
+              <img src="romi.jpg" alt="Romina" class="about-portrait">
+              <div class="about-text">
+                <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Romina</h4>
+                <p class="muted" style="line-height: 1.7;">
+                  Soy bailarina de tango nacida en el oeste del Gran Buenos Aires. Empecé a bailar hace 10 años 
+                  en el Club Premier de Caballito. Mi estilo es alegre y dinámico, con influencias del teatro, pilates 
+                  y ritmos latinos. El baile me conecta con el momento presente y con el bailarín con quien comparto la pista.
+                </p>
+                <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
+                  Tango me salvó la vida. Hoy junto a Ramón compartimos una propuesta que une pasión, diversión y 
+                  una mirada profunda sobre la conexión.
+                </blockquote>
+              </div>
             </div>
           </article>
         
           <article class="card about-card">
-            <div class="card-body content">
-              <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Ramón</h4>
-              <img src="ramon.jpg" alt="Ramón" class="about-photo">
-              <p class="muted" style="line-height: 1.7;">
-                Descubrí la danza con el folclore y los ritmos latinos y me enamoré del tango. Desde 2000 me dedico 
-                a perfeccionarlo de forma profesional. Fui premiado en concursos en Argentina y Chile. Enseño desde 2005 
-                y dirijo la asociación mitango et caetera en Francia.
-              </p>
-              <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
-                El tango es mi baile favorito. Otros bailes me ayudaron a formar mi estilo y a entender mejor el cuerpo 
-                y la conexión.
-              </blockquote>
+            <div class="about-row">
+              <img src="ramon.jpg" alt="Ramón" class="about-portrait">
+              <div class="about-text">
+                <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Ramón</h4>
+                <p class="muted" style="line-height: 1.7;">
+                  Descubrí la danza con el folclore y los ritmos latinos y me enamoré del tango. Desde 2000 me dedico 
+                  a perfeccionarlo de forma profesional. Fui premiado en concursos en Argentina y Chile. Enseño desde 2005 
+                  y dirijo la asociación mitango et caetera en Francia.
+                </p>
+                <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
+                  El tango es mi baile favorito. Otros bailes me ayudaron a formar mi estilo y a entender mejor el cuerpo 
+                  y la conexión.
+                </blockquote>
+              </div>
             </div>
+          </article>
+        </div>
           </article>
         </div>
       </div>
@@ -210,42 +216,37 @@
         </div>
 
         <div class="grid-2">
-          <article class="card about-card">
-            <div class="about-row">
-              <img src="romi.jpg" alt="Romina" class="about-portrait">
-              <div class="about-text">
-                <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Romina</h4>
-                <p class="muted" style="line-height: 1.7;">
-                  Soy bailarina de tango nacida en el oeste del Gran Buenos Aires. Empecé a bailar hace 10 años 
-                  en el Club Premier de Caballito. Mi estilo es alegre y dinámico, con influencias del teatro, pilates 
-                  y ritmos latinos. El baile me conecta con el momento presente y con el bailarín con quien comparto la pista.
-                </p>
-                <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
-                  Tango me salvó la vida. Hoy junto a Ramón compartimos una propuesta que une pasión, diversión y 
-                  una mirada profunda sobre la conexión.
-                </blockquote>
-              </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <h3 style="margin:0 0 16px; color: var(--burgundy-800);">Enviar mensaje</h3>
+              <form id="contactForm" autocomplete="on">
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="message">Mensaje</label>
+                  <textarea id="message" name="message" required></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Enviar</button>
+                <p class="muted" id="formNote" style="margin-top: 10px; font-size: 13px; display:none;">Gracias. Te respondemos pronto.</p>
+              </form>
             </div>
-          </article>
-        
-          <article class="card about-card">
-            <div class="about-row">
-              <img src="ramon.jpg" alt="Ramón" class="about-portrait">
-              <div class="about-text">
-                <h4 style="margin:0 0 8px; color: var(--burgundy-800); font-size: 22px;">Ramón</h4>
-                <p class="muted" style="line-height: 1.7;">
-                  Descubrí la danza con el folclore y los ritmos latinos y me enamoré del tango. Desde 2000 me dedico 
-                  a perfeccionarlo de forma profesional. Fui premiado en concursos en Argentina y Chile. Enseño desde 2005 
-                  y dirijo la asociación mitango et caetera en Francia.
-                </p>
-                <blockquote style="border-left: 4px solid var(--burgundy-200); padding-left: 12px; color: var(--burgundy-700); margin: 16px 0 0; font-weight: 600;">
-                  El tango es mi baile favorito. Otros bailes me ayudaron a formar mi estilo y a entender mejor el cuerpo 
-                  y la conexión.
-                </blockquote>
-              </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <h3 style="margin:0 0 16px; color: var(--burgundy-800);">Whatsapp o email</h3>
+              <p class="muted">Elegí el canal que prefieras.</p>
+              <p class="mt-8"><a href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp</a></p>
+              <p><a href="mailto:abrazodearrabal@gmail.com">abrazodearrabal@gmail.com</a></p>
             </div>
-          </article>
+          </div>
         </div>
+      </div>
     </section>
   </main>
 
