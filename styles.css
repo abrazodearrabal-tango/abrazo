@@ -128,3 +128,24 @@
   background-position: center 15%;  /* recorte desde 15% del top */
   border-radius: 8px 8px 0 0;       /* opcional, esquinas redondeadas arriba */
 }
+
+/* CTA destacado */
+.highlight-cta {
+  background: linear-gradient(to bottom, #fff7f7, #ffffff);
+  padding: 80px 0;
+}
+
+.cta-box {
+  background: #fff0f0;
+  border: 2px solid var(--burgundy-200);
+  border-radius: 16px;
+  padding: 48px 32px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.cta-box .btn-lg {
+  font-size: 18px;
+  padding: 14px 32px;
+}
