@@ -96,6 +96,18 @@ section{padding:80px 0;}
   .about-portrait{ height:340px; } /* mantiene presencia sin aire extra */
 }
 
+/* About: mejor padding del título y alineación fina */
+.about-row{ gap: 28px; }                /* un poco más de aire lateral */
+.about-text{ padding-top: 10px; }       /* baja el título un toque */
+.about-text h4{
+  margin: 2px 0 14px;                   /* margen superior leve, buen espacio abajo */
+  line-height: 1.1;
+}
+
+@media (max-width: 900px){
+  .about-text{ padding-top: 6px; }      /* en mobile un poco menos */
+}
+
 /* ===== CTA destacado ===== */
 .highlight-cta{background:linear-gradient(to bottom,#fff7f7,#fff);padding:80px 0;}
 .cta-box{background:#fff0f0;border:2px solid var(--burgundy-200);border-radius:16px;padding:48px 32px;max-width:700px;margin:0 auto;box-shadow:0 8px 20px rgba(0,0,0,.08);}
