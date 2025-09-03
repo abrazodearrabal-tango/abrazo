@@ -10,107 +10,8 @@
   <meta property="og:image" content="assets/img/og-abrazo.jpg" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="/favicon.ico" />
-  <style>
-    /* ===== CSS base ===== */
-    :root {
-      --bg: #ffffff;
-      --fg: #1f2937;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --container: 1200px;
-      /* Burgundy palette */
-      --burgundy-50: #f7eef1;
-      --burgundy-100: #edd8dd;
-      --burgundy-200: #dcb6c0;
-      --burgundy-600: #7a2336;
-      --burgundy-700: #671d2e;
-      --burgundy-800: #541827;
-      --burgundy-900: #3b0f1b;
-      /* Sage palette */
-      --sage-50: #f3f7f4;
-      --sage-100: #e7efe9;
-      --sage-200: #d7e5dc;
-      --sage-700: #476a55;
-    }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--burgundy-600); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 16px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 8px; border: 0; cursor: pointer; font-weight: 600; font-size: 16px; }
-    .btn-primary { background: var(--burgundy-600); color: #fff; }
-    .btn-primary:hover { background: var(--burgundy-700); }
-    .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
-    .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--sage-100); color: var(--sage-700); font-size: 14px; }
+  <link rel="stylesheet" href="styles.css">
 
-    /* ===== Header ===== */
-    header { position: fixed; top: 0; left: 0; right: 0; backdrop-filter: blur(8px); background: rgba(255,255,255,.9); border-bottom: 1px solid var(--border); z-index: 50; }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .brand { display: flex; align-items: center; gap: 12px; height: 32px; }
-    .brand-logo { width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #b33951 0%, #7a2336 55%, #3b0f1b 100%); box-shadow: 0 1px 0 rgba(0,0,0,.08) inset; }
-    .brand-title { font-weight: 800; letter-spacing: .2px; }
-    .brand-sub { font-size: 12px; color: #6b7280; margin-top: -2px; }
-    .nav-links { display: none; gap: 20px; align-items: center; }
-    .lang { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-    .lang button { padding: 6px 10px; font-size: 14px; border: 0; background: transparent; cursor: pointer; }
-    .lang .is-active { background: var(--burgundy-600); color: #fff; }
-    .hamb { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--border); background: #fff; cursor: pointer; }
-    .mobile-menu { display: none; border-bottom: 1px solid var(--border); background: #fff; }
-    .mobile-menu a { display: block; padding: 12px 16px; border-top: 1px solid var(--border); }
-
-    /* ===== Sections ===== */
-    main { padding-top: 72px; }
-    section { padding: 80px 0; }
-    .hero { background: linear-gradient(135deg, var(--burgundy-50), var(--sage-50)); text-align: center; }
-    .hero h1 { font-size: clamp(40px, 6vw, 64px); margin: 0 0 8px; color: var(--burgundy-800); }
-    .hero p.lead { font-size: clamp(18px, 3vw, 24px); color: var(--sage-700); margin: 0 0 24px; font-weight: 300; }
-    .hero p.desc { font-size: 18px; color: #374151; max-width: 760px; margin: 0 auto 28px; line-height: 1.6; }
-
-    .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.06); overflow: hidden; }
-    .card .card-body { padding: 24px; }
-    .center { text-align: center; }
-    .muted { color: var(--muted); }
-
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } .nav-links { display: none; } }
-
-    .section-title { font-size: clamp(28px, 4vw, 40px); color: var(--burgundy-800); margin: 0 0 12px; font-weight: 800; }
-    .section-sub { font-size: 20px; color: var(--burgundy-700); font-weight: 300; margin: 0 0 24px; }
-
-    .list { display: grid; gap: 10px; font-size: 16px; color: #374151; }
-    .list .item { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
-
-    /* About cards with soft background image */
-    .about-card { position: relative; overflow: hidden; }
-    .about-card .bgimg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .15; transform: translateX(10%); }
-    .about-card .content { position: relative; }
-
-    /* Contact form */
-    .form-group { margin-bottom: 14px; }
-    label { display: block; font-size: 14px; margin-bottom: 6px; }
-    input, textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; }
-    textarea { min-height: 120px; resize: vertical; }
-
-    /* Footer */
-    footer { background: var(--burgundy-900); color: #fff; padding: 48px 0; }
-    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; } }
-    .footer small, .footer a { color: #e5d6db; }
-
-    /* Simple reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-    /* Utilities */
-    .mt-8 { margin-top: 32px; }
-    .mb-8 { margin-bottom: 32px; }
-    .mb-16 { margin-bottom: 48px; }
-    .py-0 { padding-top: 0; padding-bottom: 0; }
-    .bg-sage { background: var(--sage-50); }
-    .bg-burgundy-soft { background: var(--burgundy-50); }
-  </style>
 </head>
 <body>
   <!-- Header -->
@@ -175,9 +76,9 @@
         <div class="card mb-8 reveal">
           <div class="card-body center">
             <h3 class="section-sub" style="margin:0 0 10px; color: var(--burgundy-800); font-weight:700;">La propuesta incluye</h3>
-            <div class="list" style="max-width: 800px; margin: 0 auto;">
-              <div class="item"><div>•</div><div>Sábado: taller de 3 horas y salida grupal (cena y milonga).</div></div>
-              <div class="item"><div>•</div><div>Domingo: segundo taller de 2 horas y práctica guiada Una tanda más con opción de feedback.</div></div>
+            <div class="list no-bullets" style="max-width: 800px; margin: 0 auto;">
+              <div class="item"><div></div><div>Sábado: taller de 3 horas y salida grupal (cena y milonga).</div></div>
+              <div class="item"><div></div><div>Domingo: segundo taller de 2 horas y práctica guiada Una tanda más con opción de feedback.</div></div>
             </div>
             <p class="muted mt-8"><em>No importa el nivel ni la experiencia. Talleres en español, inglés, francés.</em></p>
             <p class="mt-8"><strong>Próximo encuentro: 27 y 28 de septiembre en Berlín</strong></p>
@@ -352,34 +253,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    // Mobile nav toggle
-    const hamb = document.getElementById('hamb');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamb.addEventListener('click', () => {
-      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // Simple form handler (no backend). Replace with your endpoint if needed.
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      note.style.display = 'block';
-      form.reset();
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobileMenu a').forEach(a => {
-      a.addEventListener('click', () => { mobileMenu.style.display = 'none'; });
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
