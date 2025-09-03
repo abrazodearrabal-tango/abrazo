@@ -162,3 +162,19 @@
   border-radius: 8px; /* si querés circular usá 50% */
   margin: 0 0 16px;
 }
+.about-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.about-portrait {
+  flex: 0 0 180px;     /* ancho fijo para la foto */
+  height: 260px;       /* altura vertical */
+  object-fit: cover;   /* mantiene proporción y recorta */
+  border-radius: 8px;
+}
+
+.about-text {
+  flex: 1;
+}
